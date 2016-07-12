@@ -31,6 +31,10 @@ type opts struct {
 	version *bool
 }
 
+func init() {
+	o = getOpts()
+}
+
 func (o *opts) setArgs(fn func(int)) {
 	if os.Args[1:] != nil {
 		if err := o.Parse(os.Args[1:]); err != nil {
@@ -75,14 +79,15 @@ func loadPix(w http.ResponseWriter, r *http.Request) {
 	w.Write(pix)
 }
 
-func init() {
-	o = getOpts()
+func pixelServer(parms string) error {
+	return listenAndServe(parms, nil)
 }
 
 func main() {
 	o.setArgs(func(code int) {
 		exitCmd(code)
 	})
+
 	http.HandleFunc("/", loadPix)
-	log.Fatal(listenAndServe(fmt.Sprintf("%v:%v", *o.ip, *o.port), nil))
+	log.Fatal(pixelServer(fmt.Sprintf("%v:%v", *o.ip, *o.port)))
 }

@@ -130,6 +130,28 @@ func TestLoadPix(t *testing.T) {
 	})
 }
 
+func TestPixelServer(t *testing.T) {
+	var (
+		act string
+		// handler interface{}
+	)
+
+	listenAndServe = func(s string, h http.Handler) error {
+		act = s
+		return nil
+	}
+
+	Convey("Testing pixelServer()", t, func() {
+		pixelServer("127.0.0.1:80")
+
+		exp := "127.0.0.1:80"
+
+		So(act, ShouldEqual, exp)
+
+	})
+
+}
+
 // func TestMain(t *testing.T) {
 // 	var (
 // 		act     string
