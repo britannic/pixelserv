@@ -111,7 +111,7 @@ func TestGetOpts(t *testing.T) {
 
 		o.SetOutput(act)
 		o.setArgs()
-
+		// Equals(t, want, fmt.Sprint(act))
 		So(fmt.Sprint(act), ShouldEqual, want)
 	})
 }
@@ -181,11 +181,6 @@ func TestPixelServer(t *testing.T) {
 		act = s
 		return nil
 	}
-
-	// pixelServer = func(parms string) error {
-	// 	handleFunc("/", loadPix)
-	// 	return listenAndServe(parms, nil)
-	// }
 
 	pixelServer = hearAndObey
 
