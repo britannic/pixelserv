@@ -110,7 +110,7 @@ func TestGetOpts(t *testing.T) {
 			want = `  -f="": Override default pixel with file source
     -h=false: Display help
     -ip="127.0.0.1": IP address for ` + prog + ` to bind to
-    -path="/": Set HTTP root path (default "/")
+    -path="/": Set HTTP root path
     -port="80": Port number for ` + prog + ` to listen on
     -version=false: Display version
 `
