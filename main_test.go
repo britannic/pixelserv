@@ -113,7 +113,7 @@ func TestGetOpts(t *testing.T) {
     -path="/": Set HTTP root path
     -port="80": Port number for ` + prog + ` to listen on
     -version=false: Display version
-`
+  `
 		}
 
 		exitCmd = func(int) { return }
