@@ -30,15 +30,16 @@ var (
 // opts struct for command line options and setting initial variables
 type opts struct {
 	*flag.FlagSet
-	file    *string
-	help    *bool
-	ip      *string
-	port    *string
-	version *bool
+	file     *string
+	httpPath *string
+	help     *bool
+	ip       *string
+	port     *string
+	version  *bool
 }
 
 func hearAndObey(parms string) error {
-	handleFunc("/", loadPix)
+	handleFunc(*o.httpPath, loadPix)
 	return listenAndServe(parms, nil)
 }
 
@@ -83,12 +84,13 @@ func getOpts() *opts {
 	}
 
 	return &opts{
-		file:    flags.String("f", "", "Override default pixel with file source"),
-		help:    flags.Bool("h", false, "Display help"),
-		ip:      flags.String("ip", "127.0.0.1", "IP address for "+path.Base(os.Args[0])+" to bind to"),
-		port:    flags.String("port", "80", "Port number for "+path.Base(os.Args[0])+" to listen on"),
-		FlagSet: flags,
-		version: flags.Bool("version", false, "Display version"),
+		file:     flags.String("f", "", "Override default pixel with file source"),
+		help:     flags.Bool("h", false, "Display help"),
+		httpPath: flags.String("path", "/", "Set HTTP root path"),
+		ip:       flags.String("ip", "127.0.0.1", "IP address for "+path.Base(os.Args[0])+" to bind to"),
+		port:     flags.String("port", "80", "Port number for "+path.Base(os.Args[0])+" to listen on"),
+		FlagSet:  flags,
+		version:  flags.Bool("version", false, "Display version"),
 	}
 }
 

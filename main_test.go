@@ -94,52 +94,66 @@ func TestGetOpts(t *testing.T) {
 		act := new(bytes.Buffer)
 		prog := path.Base(os.Args[0])
 
-		linuxWant := `  -f="": Override default pixel with file source
-    -h=false: Display help
-    -ip="127.0.0.1": IP address for pixelserv.test to bind to
-    -port="80": Port number for pixelserv.test to listen on
-    -version=false: Display version
-  `
 		want := `  -f string
     	Override default pixel with file source
   -h	Display help
   -ip string
     	IP address for ` + prog + ` to bind to (default "127.0.0.1")
+  -path string
+    	Set HTTP root path (default "/")
   -port string
     	Port number for ` + prog + ` to listen on (default "80")
   -version
     	Display version
 `
 		if runtime.GOOS == "linux" {
-			want = linuxWant
+			want = `  -f="": Override default pixel with file source
+    -h=false: Display help
+    -ip="127.0.0.1": IP address for ` + prog + ` to bind to
+    -path="/": Set HTTP root path (default "/")
+    -port="80": Port number for ` + prog + ` to listen on
+    -version=false: Display version
+`
 		}
+
 		exitCmd = func(int) { return }
 		origArgs := os.Args
-		os.Args = []string{"pixelserv.test", "-convey-json", "-h"}
+		defer func() { os.Args = origArgs; return }()
+
+		os.Args = []string{prog, "-convey-json", "-h"}
 
 		o = getOpts()
-
 		o.Init("pixelserv", flag.ContinueOnError)
-
 		o.SetOutput(act)
 		o.setArgs()
 
 		So(fmt.Sprint(act), ShouldEqual, want)
 
 		Convey("Now lets test with an invalid flag", func() {
-			os.Args = []string{"pixelserv.test", "-z"}
+			os.Args = []string{prog, "-z"}
 			o = getOpts()
-
 			o.Init("pixelserv", flag.ContinueOnError)
-
 			o.SetOutput(act)
 			o.setArgs()
 
 			want += "flag provided but not defined: -z\n" + want + want
 			So(fmt.Sprint(act), ShouldEqual, want)
 		})
+	})
+}
 
-		os.Args = origArgs
+func TestGetPix(t *testing.T) {
+	Convey("Testing getPix() []byte, error", t, func() {
+		exp := []byte{71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0, 255, 255, 255, 0, 0, 0, 33, 249, 4, 1, 0, 0, 0, 0, 44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59}
+		f := "./pix.bytes"
+
+		err := ioutil.WriteFile(f, exp, 0644)
+		So(err, ShouldBeNil)
+
+		act, err := getPix(f)
+
+		So(err, ShouldBeNil)
+		So(string(act), ShouldEqual, string(exp))
 	})
 }
 
@@ -166,6 +180,26 @@ func TestLoadPixDefault(t *testing.T) {
 				So(b, ShouldBeTrue)
 			})
 		})
+	})
+}
+
+func TestLoadPixError(t *testing.T) {
+	Convey("Testing LoadPix() http.HandleFunc with error assertion", t, func() {
+		var act error
+		origFile := *o.file
+		*o.file = "rumpelstilzchen"
+
+		defer func() { *o.file = origFile }()
+
+		logFatalln = func(vals ...interface{}) {
+			for _, v := range vals {
+				act = v.(error)
+			}
+		}
+		w := httptest.NewRecorder()
+		r := &http.Request{}
+		loadPix(w, r)
+		So(act, ShouldNotBeNil)
 	})
 }
 
@@ -204,31 +238,31 @@ func TestPixelServer(t *testing.T) {
 		origPixServer = pixelServer
 	)
 
-	listenAndServe = func(s string, h http.Handler) error {
-		act = s
-		return nil
-	}
-
-	pixelServer = hearAndObey
+	defer func() { pixelServer = origPixServer; return }()
 
 	Convey("Testing pixelServer()", t, func() {
 		exp := "127.0.0.1:80"
+		*o.httpPath = "/init"
+
+		listenAndServe = func(s string, h http.Handler) error {
+			act = s
+			return nil
+		}
+
 		pixelServer(exp)
 		So(act, ShouldEqual, exp)
 
-		pixelServer = func(parms string) error {
-			handleFunc("/test", loadPix)
-			return listenAndServe(parms, nil)
-		}
+		*o.httpPath = "/test"
+		pixelServer = hearAndObey
 
 		logFatalln = func(v ...interface{}) {
 			act = fmt.Sprint(v)
 			return
 		}
+
 		pixelServer("busted")
 		So(act, ShouldEqual, "busted")
 	})
-	pixelServer = origPixServer
 }
 
 var execCommand = exec.Command
