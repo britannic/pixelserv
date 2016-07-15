@@ -123,7 +123,7 @@ func TestGetOpts(t *testing.T) {
 		os.Args = []string{prog, "-convey-json", "-h"}
 
 		o = getOpts()
-		o.Init("pixelserv", flag.ContinueOnError)
+		o.Init(prog, flag.ContinueOnError)
 		o.SetOutput(act)
 		o.setArgs()
 
