@@ -103,7 +103,7 @@ func getPix(f string) ([]byte, error) {
 func loadPix(w http.ResponseWriter, r *http.Request) {
 	pix, err := getPix(*o.file)
 	if err != nil {
-		log.Fatalln(err)
+		logFatalln(err)
 	}
 
 	w.WriteHeader(http.StatusOK)

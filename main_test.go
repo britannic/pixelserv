@@ -103,16 +103,32 @@ func TestGetOpts(t *testing.T) {
     	Display version
 `
 		exitCmd = func(int) { return }
+		origArgs := os.Args
+		os.Args = []string{"pixelserv.test", "-convey-json", "-h"}
 
-		os.Args = append(os.Args, "-h")
 		o = getOpts()
 
 		o.Init("pixelserv", flag.ContinueOnError)
 
 		o.SetOutput(act)
 		o.setArgs()
-		// Equals(t, want, fmt.Sprint(act))
+
 		So(fmt.Sprint(act), ShouldEqual, want)
+
+		Convey("Now lets test with an invalid flag", func() {
+			os.Args = []string{"pixelserv.test", "-z"}
+			o = getOpts()
+
+			o.Init("pixelserv", flag.ContinueOnError)
+
+			o.SetOutput(act)
+			o.setArgs()
+
+			want += "flag provided but not defined: -z\n" + want + want
+			So(fmt.Sprint(act), ShouldEqual, want)
+		})
+
+		os.Args = origArgs
 	})
 }
 
