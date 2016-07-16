@@ -107,7 +107,7 @@ func TestGetOpts(t *testing.T) {
 `
 
 		if os.Getenv("DRONE") == "true" {
-			want = "  -f=\"\": load pixel or other content from `< file >` source\n    -h=false: Display help\n     -ip=\"127.0.0.1\": IP address for " + prog + " to bind to\n     -path=\"/\": Set HTTP root path\n     -port=\"80\": Port number for " + prog + " to listen on\n     -version=false: Show version\n"
+			want = "  -f=\"\": load pixel or other content from `< file >` source\n  -h=false: Display help\n  -ip=\"127.0.0.1\": IP address for " + prog + " to bind to\n  -path=\"/\": Set HTTP root path\n  -port=\"80\": Port number for " + prog + " to listen on\n  -version=false: Show version\n"
 		}
 
 		exitCmd = func(int) { return }
