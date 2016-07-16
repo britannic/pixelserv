@@ -11,7 +11,6 @@ import (
 	"os/exec"
 	"path"
 	"reflect"
-	"runtime"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -94,8 +93,8 @@ func TestGetOpts(t *testing.T) {
 		act := new(bytes.Buffer)
 		prog := path.Base(os.Args[0])
 
-		want := `  -f string
-    	Override default pixel with file source
+		want := `  -f <file>
+    	load pixel or other content from <file> source
   -h	Display help
   -ip string
     	IP address for ` + prog + ` to bind to (default "127.0.0.1")
@@ -104,10 +103,11 @@ func TestGetOpts(t *testing.T) {
   -port string
     	Port number for ` + prog + ` to listen on (default "80")
   -version
-    	Display version
+    	Show version
 `
-		if runtime.GOOS == "linux" {
-			want = `  -f="": Override default pixel with file source
+
+		if os.Getenv("DRONE") == "true" {
+			want = `  -f="": Override default pixel with <path> source
     -h=false: Display help
     -ip="127.0.0.1": IP address for ` + prog + ` to bind to
     -path="/": Set HTTP root path

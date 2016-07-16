@@ -84,13 +84,13 @@ func getOpts() *opts {
 	}
 
 	return &opts{
-		file:     flags.String("f", "", "Override default pixel with file source"),
+		file:     flags.String("f", "", "load pixel or other content from `<file>` source"),
 		help:     flags.Bool("h", false, "Display help"),
 		httpPath: flags.String("path", "/", "Set HTTP root path"),
 		ip:       flags.String("ip", "127.0.0.1", "IP address for "+path.Base(os.Args[0])+" to bind to"),
 		port:     flags.String("port", "80", "Port number for "+path.Base(os.Args[0])+" to listen on"),
 		FlagSet:  flags,
-		version:  flags.Bool("version", false, "Display version"),
+		version:  flags.Bool("version", false, "Show version"),
 	}
 }
 
