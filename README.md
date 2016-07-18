@@ -17,27 +17,23 @@ If [Go](https://golang.org) supports your platform's CPU architecture and OS, th
 
 ### Installation Notes:
 
-Install it as a unix service, or run it manually in the background and use it for any advert server hostnames that are redirected in a browser's webpage
+Install it as a unix service, or run it manually in the background and use it for as your blackhole/dns redirect address for any blacklisted advert servers
 
 ### Usage
-	pixelserv [options]
 
-	-f string
-			Override default pixel with file source
+	Usage: pixelserv [options]
 
-	-h	Display help
-
-	-ip string
-			IP address for pixelserv to bind to (default "127.0.0.1")
-
-	-path string
-			Set HTTP root path (default "/")
-
-	-port string
-			Port number for pixelserv to listen on (default "80")
-
-	-version
-			Display version
+	  -f <file>
+	    	load pixel or other content from <file> source
+	  -h	Display help
+	  -ip string
+	    	IP address for pixelserv to bind to (default "127.0.0.1")
+	  -path string
+	    	Set HTTP root path (default "/")
+	  -port string
+	    	Port number for pixelserv to listen on (default "80")
+	  -version
+	    	Show version
 
 
 - - -
