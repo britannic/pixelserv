@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/britannic/pixelserv/blob/master/LICENSE.txt) [![Alpha  Version](https://img.shields.io/badge/version-v0.90-red.svg)](https://github.com/britannic/pixelserv) [![Build Status](https://travis-ci.org/britannic/pixelserv.svg?branch=master)](https://travis-ci.org/britannic/pixelserv) [![Coverage Status](https://coveralls.io/repos/github/britannic/pixelserv/badge.svg?branch=master)](https://coveralls.io/github/britannic/pixelserv?branch=master) [![Go Report Card](https://goreportcard.com/badge/gojp/goreportcard)](https://goreportcard.com/report/github.com/britannic/pixelserv)
 
 ### Overview
-pixelserv is a webserver that simply returns a single transparent pixel
+pixelserv is a webserver that simply returns a single transparent pixel or content loaded from file
 
 ### Features
 Prevents HTTP 404 page not found messages if used in conjunction with dnsmasq blacklisted IP redirects
