@@ -17,7 +17,7 @@ var (
 	githash = "UNKNOWN"
 	version = "UNKNOWN"
 
-	exitCmd        = os.Exit
+	exit           = os.Exit
 	exitOnError    = flag.ExitOnError
 	handleFunc     = http.HandleFunc
 	listenAndServe = http.ListenAndServe
@@ -67,11 +67,11 @@ func (o *opts) setArgs() {
 	switch {
 	case *o.help:
 		o.Usage()
-		exitCmd(0)
+		exit(0)
 
 	case *o.version:
 		fmt.Printf(" Version:\t\t%s\n Build date:\t\t%s\n Git short hash:\t%v\n", version, build, githash)
-		exitCmd(0)
+		exit(0)
 	}
 }
 
@@ -102,15 +102,15 @@ func getPix(f string) ([]byte, error) {
 	return []byte{71, 73, 70, 56, 57, 97, 1, 0, 1, 0, 128, 0, 0, 255, 255, 255, 0, 0, 0, 33, 249, 4, 1, 0, 0, 0, 0, 44, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 68, 1, 0, 59}, nil
 }
 
-func loadPix(w http.ResponseWriter, r *http.Request) {
+func loadPix(w http.ResponseWriter, _ *http.Request) {
 	pix, err := getPix(*o.file)
 	if err != nil {
 		logFatalln(err)
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "image/gif")
-	w.Header().Set("Content-Length", "43")
+	w.Header().Set("Content-Type", fmt.Sprint(http.DetectContentType(pix)))
+	w.Header().Set("Content-Length", fmt.Sprint(len(pix)))
 	w.Header().Set("Accept-Ranges", "bytes")
 	w.Write(pix)
 }

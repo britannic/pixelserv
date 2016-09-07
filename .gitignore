@@ -6,3 +6,15 @@ pixelserv
 browse.VC.db
 
 *.swp
+
+*.xml
+
+etc/.DS_Store
+
+config/scripts/.DS_Store
+
+config/.DS_Store
+
+*.iml
+
+.DS_Store
