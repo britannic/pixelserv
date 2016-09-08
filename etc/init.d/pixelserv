@@ -1,17 +1,17 @@
 #!/bin/sh
-#
-# $Id: pixelserver.init.d,v 1.0 2015/10/06 15:11:21 ncb Exp $
-#
-
 ### BEGIN INIT INFO
 # Provides:          pixelserv
 # Required-Start:    $network
 # Required-Stop:     $network
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: pixelserv server for ad blocking
-# Description:       Server for serving 1x1 pixels
+# Short-Description: pixelserv web server
+# Description:       Server for serving 1x1 pixels for ad blocking
 ### END INIT INFO
+
+#
+# $Id: pixelserver.init.d,v 1.0 2016/09/07 15:11:21 ncb Exp $
+#
 
 export LANGUAGE=C
 export LANG=C

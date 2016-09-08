@@ -5,8 +5,6 @@ import "flag"
 func Example_main() {
 	testMainSetUp()
 	main()
-	//Output:
-
 }
 
 func testMainSetUp() {

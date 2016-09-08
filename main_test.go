@@ -29,9 +29,9 @@ func TestOptsSetArgs(t *testing.T) {
 		// Receiver fields.
 		rFlagSet *flag.FlagSet
 		rh       *bool
-		rip      *string
-		rport    *string
-		rversion *bool
+		rIP      *string
+		rPort    *string
+		rVersion *bool
 		// Parameters.
 		fn func(int)
 	}{
@@ -40,27 +40,27 @@ func TestOptsSetArgs(t *testing.T) {
 			rFlagSet: &flag.FlagSet{},
 			rh:       &tTrue,
 			fn:       func(int) { return },
-			rip:      tStr(""),
-			rport:    tStr(""),
-			rversion: &tFalse,
+			rIP:      tStr(""),
+			rPort:    tStr(""),
+			rVersion: &tFalse,
 		},
 		{
 			name:     "-version called",
 			rFlagSet: &flag.FlagSet{},
 			rh:       &tFalse,
 			fn:       func(int) { return },
-			rip:      tStr(""),
-			rport:    tStr(""),
-			rversion: &tTrue,
+			rIP:      tStr(""),
+			rPort:    tStr(""),
+			rVersion: &tTrue,
 		},
 		{
 			name:     "-ip and -port set",
 			rFlagSet: &flag.FlagSet{},
 			rh:       &tFalse,
 			fn:       func(int) { return },
-			rip:      tStr("192.168.168.1"),
-			rport:    tStr("8080"),
-			rversion: &tFalse,
+			rIP:      tStr("192.168.168.1"),
+			rPort:    tStr("8080"),
+			rVersion: &tFalse,
 		},
 	}
 
@@ -72,18 +72,18 @@ func TestOptsSetArgs(t *testing.T) {
 		o = &opts{
 			FlagSet: tt.rFlagSet,
 			help:    tt.rh,
-			ip:      tt.rip,
-			port:    tt.rport,
-			version: tt.rversion,
+			ip:      tt.rIP,
+			port:    tt.rPort,
+			version: tt.rVersion,
 		}
 
 		exit = func(int) { return }
 		o.setArgs()
 		Convey("Running main.setArgs() test", t, func() {
 			So(*o.help, ShouldEqual, *tt.rh)
-			So(*o.ip, ShouldEqual, *tt.rip)
-			So(*o.port, ShouldEqual, *tt.rport)
-			So(*o.version, ShouldEqual, *tt.rversion)
+			So(*o.ip, ShouldEqual, *tt.rIP)
+			So(*o.port, ShouldEqual, *tt.rPort)
+			So(*o.version, ShouldEqual, *tt.rVersion)
 		})
 	}
 }
