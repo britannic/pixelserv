@@ -22,6 +22,7 @@ var (
 	handleFunc     = http.HandleFunc
 	listenAndServe = http.ListenAndServe
 	logFatalln     = log.Fatalln
+	logPrintf      = log.Printf
 	o              = getOpts()
 	pixelServer    = hearAndObey
 	stdErr         = os.Stderr
@@ -117,5 +118,6 @@ func loadPix(w http.ResponseWriter, _ *http.Request) {
 
 func main() {
 	o.setArgs()
+	logPrintf("web server listening @ http://%v:%v", *o.ip, *o.port)
 	logFatalln(pixelServer(fmt.Sprintf("%v:%v", *o.ip, *o.port)))
 }
