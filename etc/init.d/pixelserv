@@ -23,7 +23,7 @@ DESC="pixel server"
 ENABLED=1
 HOST='192.168.168.1'
 PORT=80
-OPTS="-ip ${HOST} -port ${PORT}"
+OPTS="-ip=${HOST} -port=${PORT}"
 
 [[ -x ${DAEMON} ]] || exit 0
 
@@ -35,7 +35,7 @@ PIDFILE=/var/run/${NAME}.pid
 [ -f /etc/default/rcS ] && . /etc/default/rcS
 
 # Predefine what can be missing from lsb source later on -- necessary to run
-# on sarge. Just present it in a bit more compact way from what was shipped
+# on args. Just present it in a bit more compact way from what was shipped
 log_daemon_msg () {
 	[ -z "${1}" ] && return 1
 	echo -n "${1}:"
@@ -50,7 +50,6 @@ log_daemon_msg () {
 
 #
 # Shortcut function for abnormal init script interruption
-#
 report_bug()
 {
 	echo ${*}
@@ -61,8 +60,7 @@ report_bug()
 case "${1}" in
 	start|force-start)
 		if [ -e ${PIDFILE} ]; then
-			status_of_proc -p ${PIDFILE} ${DAEMON} "$NAME process" &&
-status=0 || status=$?
+			status_of_proc -p ${PIDFILE} ${DAEMON} "$NAME process" && status=0 || status=$?
 			# If the status is SUCCESS then don't need to start again.
 			if [ ${status} -eq 0 ]; then
 				exit 0 # Exit
@@ -80,19 +78,15 @@ status=0 || status=$?
 
 	stop)
 		if [ -e ${PIDFILE} ]; then
-			status_of_proc -p ${PIDFILE} ${DAEMON} "Stopping the $NAME
- process" && status=0 || status=$?
+			status_of_proc -p ${PIDFILE} ${DAEMON} "Stopping the $NAME process" && status=0 || status=$?
 		if [ ${status} -eq 0 ]; then
-				[ "${VERBOSE}" != no ] && log_daemon_msg "Stopping
- ${DESC}" "${NAME}"
-				start-stop-daemon --stop --quiet --pidfile ${PIDFI
-LE}
+				[ "${VERBOSE}" != no ] && log_daemon_msg "Stopping ${DESC}" "${NAME}"
+				start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
 				rm -rf ${PIDFILE} > /dev/null
 				[ "${VERBOSE}" != no ] && log_end_msg 0
 			fi
 		else
-			[ "${VERBOSE}" != no ] && log_daemon_msg "${NAME} process
-is not running"
+			[ "${VERBOSE}" != no ] && log_daemon_msg "${NAME} process is not running"
 			[ "${VERBOSE}" != no ] && log_end_msg 0
 		fi
 		;;
@@ -113,9 +107,7 @@ is not running"
 		;;
 
 	*)
-
-		echo "Usage: /etc/init.d/${NAME} {start|stop|status|restart|force-
-reload|reload}"
+		echo "Usage: /etc/init.d/${NAME} {start|stop|status|restart|force-reload|reload}"
 		exit 1
 
 esac
