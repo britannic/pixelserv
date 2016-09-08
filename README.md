@@ -17,7 +17,7 @@ If [Go](https://golang.org) supports your platform's CPU architecture and OS, th
 
 ### Installation Notes:
 
-Install it as a unix service, or run it manually in the background and use it for as your blackhole/dns redirect address for any blacklisted advert servers
+Install it as a unix service, or run it manually in the background and use it as your blackhole/dns redirect address for any blacklisted advert servers
 
 ### Usage
 
