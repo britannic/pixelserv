@@ -18,3 +18,9 @@ config/.DS_Store
 .DS_Store
 
 pixelserv
+
+*.crt
+
+*.key
+
+*.example
