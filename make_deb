@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
+export COPYFILE_DISABLE=true
+drop="$HOME/Dropbox/EdgeOS"
+arch=${2}
+dep=''
+desc='Installs an EdgeOS pixel server and init.d service to manage it'
+dir='/tmp/'
+dist='deb'
+exc1=\**/.DS_Store
+exc2=\**/*.bak
+exe=${1}
+host='dev1'
+lic='https://opensource.org/licenses/BSD-2-Clause'
+mntr="${pkg}@helmrock.com"
+pkg="edgeos-${exe}"
+postinst='./.payload/post-install.sh'
+prerm='./.payload/pre-remove.sh'
+postrm='./.payload/post-remove.sh'
+prov='Adds EdgeOS pixel server and init.d service to manage it'
+pwd=$(pwd)
+sdir="${pwd}/.payload"
+src1='etc/'
+src2='config/'
+scripts="${sdir}/${src2}/scripts"
+url='https://github.com/britannic/${exe}'
+vend='Helm Rock Consulting'
+ver=$(cat VERSION)
+pver=$(cat OLDVERSION)
+zver='s/'${pkg}'_'${pver}'_/'${pkg}'_'${ver}'_/g'
+deb="${pkg}_${ver}_${arch}.${dist}"
+
+bundle() {
+	cwd=$(pwd)
+	local dir='./.payload/'
+	local templt='decompress_pre-install'
+
+	cat "${templt}" >"${postinst}"
+	cd "${dir}"
+
+	tar -zc \
+		--exclude='._*' \
+		--exclude='.svn' \
+		--exclude='.DS_Store' \
+		--exclude='*.bak' \
+		--exclude='*~' \
+		./* >>"${cwd}/${postinst}"
+	cd "${cwd}"
+}
+
+# --after-remove "${postrm}"
+# --before-install "${pre}" \
+# --deb-pre-depends "${dep}" \
+
+make_debian() {
+	fpm \
+		-f \
+		--description "${desc}" \
+		--license "${lic}" \
+		--after-install "${postinst}" \
+		--before-remove "${prerm}" \
+		--provides "${prov}" \
+		--url "${url}" \
+		--vendor "${vend}" \
+		--verbose \
+		-a "${arch}" \
+		-C "${sdir}" \
+		-m "${mntr}" \
+		-n "${pkg}" \
+		-t "${dist}" \
+		-v "${ver}" \
+		-x "${exc1}" \
+		-x "${exc2}" \
+		-s dir "${src1}" "${src2}"
+}
+
+compress_deb(){
+	tar -zcvf "${deb}.tgz" "${deb}"
+}
+
+update_dropbox() {
+	[[ -d "${drop}/" ]] && install -m 0755 "${deb}.tgz" "${drop}/"
+}
+
+upload() {
+	scp "${deb}" "${host}:${dir}"
+}
+
+# Build it!
+make_debian && compress_deb 

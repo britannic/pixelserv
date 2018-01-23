@@ -23,6 +23,13 @@ func TestOptsSetArgs(t *testing.T) {
 		return &s
 	}
 
+	// origArgs := os.Args
+	// defer func() { os.Args = origArgs }()
+	// os.Args = []string{path.Base(os.Args[0]), "-convey-json", "-h"}
+	// prog := path.Base(os.Args[0])
+	// os.Args = []string{prog, "-convey-json", "-h"}
+	// cleanArgs(os.Args[1:])
+
 	tests := []struct {
 		// Test description.
 		name string
@@ -39,7 +46,7 @@ func TestOptsSetArgs(t *testing.T) {
 			name:     "-h called",
 			rFlagSet: &flag.FlagSet{},
 			rh:       &tTrue,
-			fn:       func(int) { return },
+			fn:       func(int) {},
 			rIP:      tStr(""),
 			rPort:    tStr(""),
 			rVersion: &tFalse,
@@ -48,7 +55,7 @@ func TestOptsSetArgs(t *testing.T) {
 			name:     "-version called",
 			rFlagSet: &flag.FlagSet{},
 			rh:       &tFalse,
-			fn:       func(int) { return },
+			fn:       func(int) {},
 			rIP:      tStr(""),
 			rPort:    tStr(""),
 			rVersion: &tTrue,
@@ -57,35 +64,37 @@ func TestOptsSetArgs(t *testing.T) {
 			name:     "-ip and -port set",
 			rFlagSet: &flag.FlagSet{},
 			rh:       &tFalse,
-			fn:       func(int) { return },
+			fn:       func(int) {},
 			rIP:      tStr("192.168.168.1"),
 			rPort:    tStr("8080"),
 			rVersion: &tFalse,
 		},
 	}
 
-	for _, tt := range tests {
-		tt.rFlagSet.Usage = func() {
-			fmt.Fprintf(os.Stderr, "Usage: %v [options]\n\n", path.Base(os.Args[0]))
-			tt.rFlagSet.PrintDefaults()
-		}
-		o = &opts{
-			FlagSet: tt.rFlagSet,
-			help:    tt.rh,
-			ip:      tt.rIP,
-			port:    tt.rPort,
-			version: tt.rVersion,
-		}
+	Convey("Running main.OptsSetArgs() test", t, func() {
+		for _, tt := range tests {
+			Convey(fmt.Sprintf("Running main.setArgs(%s) test", tt.name), func() {
+				tt.rFlagSet.Usage = func() {
+					fmt.Fprintf(os.Stderr, "Usage: %v [options]\n\n", path.Base(os.Args[0]))
+					tt.rFlagSet.PrintDefaults()
+				}
+				o = &opts{
+					FlagSet: tt.rFlagSet,
+					help:    tt.rh,
+					ip:      tt.rIP,
+					port:    tt.rPort,
+					version: tt.rVersion,
+				}
 
-		exit = func(int) { return }
-		o.setArgs()
-		Convey("Running main.setArgs() test", t, func() {
-			So(*o.help, ShouldEqual, *tt.rh)
-			So(*o.ip, ShouldEqual, *tt.rIP)
-			So(*o.port, ShouldEqual, *tt.rPort)
-			So(*o.version, ShouldEqual, *tt.rVersion)
-		})
-	}
+				exit = func(int) {}
+				o.setArgs()
+				So(*o.help, ShouldEqual, *tt.rh)
+				So(*o.ip, ShouldEqual, *tt.rIP)
+				So(*o.port, ShouldEqual, *tt.rPort)
+				So(*o.version, ShouldEqual, *tt.rVersion)
+			})
+		}
+	})
 }
 
 func TestGetOpts(t *testing.T) {
@@ -110,9 +119,9 @@ func TestGetOpts(t *testing.T) {
 			want = "  -f=\"\": load pixel or other content from `<file>` source\n  -h=false: Display help\n  -ip=\"127.0.0.1\": IP address for " + prog + " to bind to\n  -path=\"/\": Set HTTP root path\n  -port=\"80\": Port number for " + prog + " to listen on\n  -version=false: Show version\n"
 		}
 
-		exit = func(int) { return }
+		exit = func(int) {}
 		origArgs := os.Args
-		defer func() { os.Args = origArgs; return }()
+		defer func() { os.Args = origArgs }()
 
 		os.Args = []string{prog, "-convey-json", "-h"}
 
@@ -232,7 +241,7 @@ func TestPixelServer(t *testing.T) {
 		origPixServer = pixelServer
 	)
 
-	defer func() { pixelServer = origPixServer; return }()
+	defer func() { pixelServer = origPixServer }()
 
 	Convey("Testing pixelServer()", t, func() {
 		exp := "127.0.0.1:80"
@@ -251,7 +260,6 @@ func TestPixelServer(t *testing.T) {
 
 		logFatalln = func(v ...interface{}) {
 			act = fmt.Sprint(v)
-			return
 		}
 
 		pixelServer("busted")

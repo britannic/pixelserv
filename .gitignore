@@ -24,3 +24,5 @@ pixelserv
 *.key
 
 *.example
+
+*.deb
