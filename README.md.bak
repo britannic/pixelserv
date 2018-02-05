@@ -49,6 +49,10 @@ either expressed or implied, of the FreeBSD Project.
 * edgeos-pixelserv has been tested on the EdgeRouter ERLite-3, ERPoe-5, ER-X: EdgeOS versions v1.7.0-v1.9.7+hotfix.4
 * Note: the debian package will not successfully install in a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
+## **Change Log**
+
+* See [changelog](CHANGELOG.md) for details
+
 ## Installation
 
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
@@ -64,10 +68,6 @@ either expressed or implied, of the FreeBSD Project.
 ### EdgeMAX ERLite-x & EdgeMax ER-X
 
 * sudo apt-get remove edgeos-pixelserv
-
-## Releases
-
-### Patch v1.0.0
 
 ### Usage
 

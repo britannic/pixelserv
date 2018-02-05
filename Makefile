@@ -26,6 +26,7 @@
 	VER=$(shell cat ./VERSION)
 	VERSIONS=s/edgeos-$(EXECUTABLE)_$(OLDVER)_/edgeos-$(EXECUTABLE)_$(VER)_/g
 	BADGE=s/version-v$(OLDVER)-green.svg/version-v$(VER)-green.svg/g
+	TAG="v$(VER)"
 
 .PHONY: all clean deps mips coverage copyright docs readme
 all: clean deps mips coverage copyright docs readme
