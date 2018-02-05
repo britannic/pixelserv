@@ -1,23 +1,22 @@
-# Ignore all
-*
-
-# Add back files with extensions and directories
-!*.*
-!*/
 *.bak
 *.crt
 *.deb
 *.DS_Store
 *.example
-*.header.bak
 *.iml
 *.key
+*.mips
+*.mipsel
 *.swp
+*.tgz
 *.xml
 browse.VC.db
 debug.test
-pixelserv
-VERSION
 
+.payload/config/scripts/pixelserv
 
-README.header.bak
+README.md.bak
+
+pixelserv.mipsel
+
+pixelserv.mips
