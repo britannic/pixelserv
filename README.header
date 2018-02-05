@@ -56,6 +56,7 @@ either expressed or implied, of the FreeBSD Project.
 ## Installation
 
 * edgeos-pixelserv installs itself as a service into /etc/init.d/pixelserv
+* The installation will modify the router's configuration settings to move "service gui http-port 80" to "service gui http-port 8180" to prevent conflict with pixelserv on port 80
 
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
@@ -71,6 +72,8 @@ sudo dpkg -i edgeos-pixelserv_1.0.1_mipsel.deb
 
 ## Removal
 
+* Removal will modify the router's configuration settings to move "service gui http-port 8180" back to the default "service gui http-port 80"
+
 ### EdgeMAX ERLite-x & EdgeMax ER-X
 
 ```bash
@@ -80,7 +83,7 @@ sudo apt-get remove edgeos-pixelserv
 ### Usage
 
 * Standalone binary
-* 
+ 
 ```bash
 /config/scripts/pixelserv -h
 ```
