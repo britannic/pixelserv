@@ -59,23 +59,37 @@ either expressed or implied, of the FreeBSD Project.
 
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
-* sudo dpkg -i edgeos-pixelserv_1.0.1_mips.deb
+```bash
+sudo dpkg -i edgeos-pixelserv_1.0.1_mips.deb
+```
 
 ### EdgeRouter ER-X & ER-X-SFP
 
-* sudo dpkg -i edgeos-pixelserv_1.0.1_mipsel.deb
+```bash
+sudo dpkg -i edgeos-pixelserv_1.0.1_mipsel.deb
+```
 
 ## Removal
 
 ### EdgeMAX ERLite-x & EdgeMax ER-X
 
-* sudo apt-get remove edgeos-pixelserv
+```bash
+sudo apt-get remove edgeos-pixelserv
+```
 
 ### Usage
 
-* /config/scripts/pixelserv -h
-*  Usage: service pixelserv {start|stop|status|restart|force-reload|reload}
+* Standalone binary
+* 
+```bash
+/config/scripts/pixelserv -h
+```
 
+* pixelserv service
+
+```bash
+service pixelserv {start|stop|status|restart|force-reload|reload}
+```
 
 > pixelserv
 
