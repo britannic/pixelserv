@@ -47,13 +47,15 @@ either expressed or implied, of the FreeBSD Project.
 ## Compatibility
 
 * edgeos-pixelserv has been tested on the EdgeRouter ERLite-3, ERPoe-5, ER-X: EdgeOS versions v1.7.0-v1.9.7+hotfix.4
-* Note: the debian package will not successfully install in a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
+* Note: the debian package will not successfully install on a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
 ## **Change Log**
 
 * See [changelog](CHANGELOG.md) for details
 
 ## Installation
+
+* edgeos-pixelserv installs itself as a service into /etc/init.d/pixelserv
 
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
@@ -72,6 +74,7 @@ either expressed or implied, of the FreeBSD Project.
 ### Usage
 
 * /config/scripts/pixelserv -h
+*  Usage: service pixelserv {start|stop|status|restart|force-reload|reload}
 
 
 > pixelserv

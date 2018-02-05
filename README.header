@@ -55,6 +55,8 @@ either expressed or implied, of the FreeBSD Project.
 
 ## Installation
 
+* edgeos-pixelserv installs itself as a service into /etc/init.d/pixelserv
+
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
 * sudo dpkg -i edgeos-pixelserv_1.0.1_mips.deb
@@ -72,3 +74,4 @@ either expressed or implied, of the FreeBSD Project.
 ### Usage
 
 * /config/scripts/pixelserv -h
+*  Usage: service pixelserv {start|stop|status|restart|force-reload|reload}
