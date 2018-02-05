@@ -105,13 +105,26 @@ try() {
 	fi
 }
 
+remv_pseudo() {
+	wanif=$(ip route get 8.8.8.8 | awk -F"dev " 'NR==1 {split($2,a," ");print a[1]}')
+	try begin
+	try set service gui http-port 80
+	try delete interfaces pseudo-ethernet peth0
+	try commit
+	try save
+	try end
+}
+
+
+
 fix_cfg_grp() {
 	try chgrp -R vyattacfg /opt/vyatta/config/active
 }
 
 remove_init(){
-	 update-rc.d -f pixelserv remove
+	 try update-rc.d -f pixelserv remove
 }
 
+remv_pseudo
 fix_cfg_grp
 remove_init

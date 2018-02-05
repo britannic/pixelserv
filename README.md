@@ -42,22 +42,22 @@ either expressed or implied, of the FreeBSD Project.
 
 ## Features
 
-* Prevents HTTP 404 page not found messages if used in conjunction with dnsmasq pixelserved IP redirects
+* Prevents HTTP 404 page not found messages if used in conjunction with dnsmasq IP redirects
 
 ## Compatibility
 
-* edgeos-pixelserv has been tested on the EdgeRouter ERLite-3, ERPoe-5, ER-X, UniFi Security Gateway USG3 routers, EdgeOS versions v1.7.0-v1.9.7+hotfix.4
-* integration could be adapted to work on VyOS and Vyatta derived ports, since  EdgeOS is a fork and port of Vyatta 6.3
+* edgeos-pixelserv has been tested on the EdgeRouter ERLite-3, ERPoe-5, ER-X: EdgeOS versions v1.7.0-v1.9.7+hotfix.4
+* Note: the debian package will not successfully install in a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
 ## Installation
 
-### EdgeRouter ERLite-3, ERPoe-5 & UniFi-Gateway-3
+### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
-* sudo dpkg -i edgeos-pixelserv_1.0.0_mips.deb
+* sudo dpkg -i edgeos-pixelserv_1.0.1_mips.deb
 
 ### EdgeRouter ER-X & ER-X-SFP
 
-* sudo dpkg -i edgeos-pixelserv_1.0.0_mipsel.deb
+* sudo dpkg -i edgeos-pixelserv_1.0.1_mipsel.deb
 
 ## Removal
 

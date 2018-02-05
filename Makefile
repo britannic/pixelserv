@@ -124,3 +124,19 @@ version:
 	$(GSED) '$(BADGE)' $(READMEHDR)
 	$(GSED) '$(VERSIONS)' $(READMEHDR)
 	cat ./VERSION > ./OLDVERSION
+
+.PHONY: release
+release: all commit push
+	@echo Released $(TAG)
+
+.PHONY: commit
+commit:
+	@echo Committing release $(TAG)
+	git commit -am"Release $(TAG)"
+	git tag $(TAG)
+
+.PHONY: push
+push:
+	@echo Pushing release $(TAG) to master
+	git push --tags
+	git push

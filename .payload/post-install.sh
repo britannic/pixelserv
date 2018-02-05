@@ -105,26 +105,34 @@ try() {
 	fi
 }
 
-fix_cfg_grp() {
-	try chgrp -R vyattacfg /opt/vyatta/config/active
-}
-
-setup_init(){
-	 update-rc.d pixelserv defaults
-}
-
-update_dns_configuration() {
-	ip=$(host $(hostname)| awk '{print $NF}')
+add_pseudo() {
+	wanif=$(ip route get 8.8.8.8 | awk -F"dev " 'NR==1 {split($2,a," ");print a[1]}')
+	# ip=$(host $(hostname)| awk '{print $NF}')
 	try begin
-	try set service gui listen-address ${ip}
+	# try set service gui listen-address ${ip}
+	try set service gui http-port 8180
 	try set interfaces pseudo-ethernet peth0 address 192.168.168.1/24
-	try set interfaces pseudo-ethernet peth0 description 'Pixel Server'
-	try set interfaces pseudo-ethernet peth0 link eth1
+	try set interfaces pseudo-ethernet peth0 description '"Pixel Server"'
+	try set interfaces pseudo-ethernet peth0 link ${wanif}
 	try commit
 	try save
 	try end
 }
 
-update_dns_configuration
+fix_cfg_grp() {
+	try chgrp -R vyattacfg /opt/vyatta/config/active
+}
+
+setup_init(){
+	try chmod 0755 /etc/init.d/pixelserv
+	try update-rc.d pixelserv defaults
+}
+
+start_pix(){
+	/etc/init.d/pixelserv start
+}
+
+add_pseudo
 fix_cfg_grp
 setup_init
+start_pix
