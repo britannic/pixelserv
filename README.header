@@ -47,7 +47,7 @@ either expressed or implied, of the FreeBSD Project.
 ## Compatibility
 
 * edgeos-pixelserv has been tested on the EdgeRouter ERLite-3, ERPoe-5, ER-X: EdgeOS versions v1.7.0-v1.9.7+hotfix.4
-* Note: the debian package will not successfully install in a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
+* Note: the debian package will not successfully install on a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
 ## **Change Log**
 
