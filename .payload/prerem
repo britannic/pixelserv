@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export DEBIAN_FRONTEND=noninteractive
+
 # Set up the Vyatta environment
 declare -i DEC
 source /opt/vyatta/etc/functions/script-template
@@ -105,34 +107,26 @@ try() {
 	fi
 }
 
-add_pseudo() {
+remv_pseudo() {
 	wanif=$(ip route get 8.8.8.8 | awk -F"dev " 'NR==1 {split($2,a," ");print a[1]}')
-	# ip=$(host $(hostname)| awk '{print $NF}')
 	try begin
-	# try set service gui listen-address ${ip}
-	try set service gui http-port 8180
-	try set interfaces pseudo-ethernet peth0 address 192.168.168.1/24
-	try set interfaces pseudo-ethernet peth0 description '"Pixel Server"'
-	try set interfaces pseudo-ethernet peth0 link ${wanif}
+	try set service gui http-port 80
+	try delete interfaces pseudo-ethernet peth0
 	try commit
 	try save
 	try end
 }
 
+
+
 fix_cfg_grp() {
 	try chgrp -R vyattacfg /opt/vyatta/config/active
 }
 
-setup_init(){
-	try chmod 0755 /etc/init.d/pixelserv
-	try update-rc.d pixelserv defaults
+remove_init(){
+	 try update-rc.d -f pixelserv remove
 }
 
-start_pix(){
-	/etc/init.d/pixelserv start
-}
-
-add_pseudo
+remv_pseudo
 fix_cfg_grp
-setup_init
-start_pix
+remove_init
