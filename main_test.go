@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"os/exec"
 	"path"
 	"reflect"
 	"testing"
@@ -188,7 +187,7 @@ func TestLoadPixDefault(t *testing.T) {
 
 func TestLoadPixError(t *testing.T) {
 	Convey("Testing LoadPix() http.HandleFunc with error assertion", t, func() {
-		var act error
+		var act string
 		origFile := *o.file
 		*o.file = "rumpelstilzchen"
 
@@ -196,7 +195,7 @@ func TestLoadPixError(t *testing.T) {
 
 		logFatalln = func(vals ...interface{}) {
 			for _, v := range vals {
-				act = v.(error)
+				act += v.(string)
 			}
 		}
 		w := httptest.NewRecorder()
@@ -267,11 +266,11 @@ func TestPixelServer(t *testing.T) {
 	})
 }
 
-var execCommand = exec.Command
+// var execCommand = exec.Command
 
-func testPxSrv(command string, args ...string) *exec.Cmd {
-	cs := []string{"-test.run=TestPixelservMain", "--", command}
-	cs = append(cs, args...)
-	cmd := exec.Command(os.Args[0], cs...)
-	return cmd
-}
+// func testPxSrv(command string, args ...string) *exec.Cmd {
+// 	cs := []string{"-test.run=TestPixelservMain", "--", command}
+// 	cs = append(cs, args...)
+// 	cmd := exec.Command(os.Args[0], cs...)
+// 	return cmd
+// }

@@ -5,6 +5,7 @@
 *.example
 *.iml
 *.key
+*.amd64
 *.mips
 *.mipsel
 *.swp

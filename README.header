@@ -85,9 +85,22 @@ sudo apt-get remove edgeos-pixelserv
 ### Usage
 
 * Standalone binary
- 
+
 ```bash
 /config/scripts/pixelserv -h
+Usage: pixelserv [options]
+
+  -f <file>
+        load pixel or other content from <file> source
+  -h    Display help
+  -ip string
+        IP address for pixelserv.amd64 to bind to (default "127.0.0.1")
+  -path string
+        Set HTTP root path (default "/")
+  -port string
+        Port number for pixelserv.amd64 to listen on (default "80")
+  -version
+        Show version
 ```
 
 * pixelserv service
