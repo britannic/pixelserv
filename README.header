@@ -61,14 +61,14 @@ either expressed or implied, of the FreeBSD Project.
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/master/pixelserv/edgeos-pixelserv_1.0.2_mips.deb
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.2_mips.deb
 sudo dpkg -i edgeos-pixelserv_1.0.2_mips.deb
 ```
 
 ### EdgeRouter ER-X & ER-X-SFP
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/master/pixelserv/edgeos-pixelserv_1.0.2_mipsel.debz
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.2_mipsel.deb
 sudo dpkg -i edgeos-pixelserv_1.0.2_mipsel.deb
 ```
 
