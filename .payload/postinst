@@ -53,7 +53,7 @@ echo_logger() {
 	shopt -s checkwinsize
 	COLUMNS=$(tput cols)
 	DEC+=1
-	CTR=$( printf "%03x" ${DEC} )
+	CTR=$(printf "%03x" ${DEC})
 	TIME=$(date +%H:%M:%S.%3N)
 
 	case "${1}" in
@@ -109,21 +109,25 @@ try() {
 
 add_pseudo() {
 	wanif=$(ip route get 8.8.8.8 | awk -F"dev " 'NR==1 {split($2,a," ");print a[1]}')
-	if [[ "${wanif}" = *"pppoe"* ]]; then
-		echo_logger W "Unable to determine a parent interface for the pseudo-ethernet interface!"
-		echo_logger I "In order to use pixelserv, a pseudo-ethernet interface is required, use these CLI commands:"
-		echo -e "\tconfigure\n"
-		echo -e "\tset service gui http-port 8180\n"
-		echo -e "\tset interfaces pseudo-ethernet peth0 address 192.168.168.1/24\n"
-		echo -e "\tset interfaces pseudo-ethernet peth0 description \"Pixel Server\"\n"
-		echo -e "\tset interfaces pseudo-ethernet peth0 link <WAN Interface>\n"
-		echo_logger I "Note: you can add any valid peth[x] interface. However, if you change the IP address, you must edit /etc/init.d/pixelserv"
-		exit 0
+	if [[ "${wanif}" == *"pppoe"* ]]; then
+		if echo ${wanif} | grep "pppoe"; then
+			wanif=$(run show configuration commands | awk '/^set interfaces ethernet.*pppoe.*$/ {print $4; exit;}')
+		fi
+
+		# echo_logger W "Unable to determine a parent interface for the pseudo-ethernet interface!"
+		# echo_logger I "In order to use pixelserv, a pseudo-ethernet interface is required, use these CLI commands:"
+		# echo -e "\tconfigure\n"
+		# echo -e "\tset service gui http-port 8180\n"
+		# echo -e "\tset interfaces pseudo-ethernet peth0 address 192.168.168.1/24\n"
+		# echo -e "\tset interfaces pseudo-ethernet peth0 description \"Pixel Server\"\n"
+		# echo -e "\tset interfaces pseudo-ethernet peth0 link <WAN Interface>\n"
+		# echo_logger I "Note: you can add any valid peth[x] interface. However, if you change the IP address, you must edit /etc/init.d/pixelserv"
+		# exit 0
 	fi
 
 	ping -c1 -t1 192.168.168.1 &>/dev/null
-	if [[ ${?} = 0  ]]; then
-		echo_logger W "192.168.168.1 is already configured, you will need to set up a pseudo-ethernet interface a with different IP address"	
+	if [[ ${?} == 0 ]]; then
+		echo_logger W "192.168.168.1 is already configured, you will need to set up a pseudo-ethernet interface with different IP address"
 		echo_logger I "In order to use pixelserv, a pseudo-ethernet interface is required, use these CLI commands:"
 		echo -e "\tconfigure\n"
 		echo -e "\tset service gui http-port 8180\n"
@@ -150,12 +154,12 @@ fix_cfg_grp() {
 	try chgrp -R vyattacfg /opt/vyatta/config/active
 }
 
-setup_init(){
+setup_init() {
 	try chmod 0755 /etc/init.d/pixelserv
 	try update-rc.d pixelserv defaults
 }
 
-start_pix(){
+start_pix() {
 	/etc/init.d/pixelserv start
 }
 

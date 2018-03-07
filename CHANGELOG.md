@@ -2,6 +2,10 @@
 
 ## Releases
 
+### Patch v1.0.2 (Mar 6, 2018)
+
+* Added logic to use pppoe parent link interface for pseudo-ethernet device
+
 ### Patch v1.0.1 (Feb 4, 2018)
 
 * Added EdgeRouter configuration settings to move "service gui http-port 80" to "service gui http-port 8180" to prevent conflict with pixelserv on port 80

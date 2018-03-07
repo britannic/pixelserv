@@ -5,7 +5,7 @@
   branch = "master"
   name = "github.com/gopherjs/gopherjs"
   packages = ["js"]
-  revision = "296de816d4fe28b61803072c3f89360e9d1823ff"
+  revision = "df18d38287ab2ed3138d564e7c8cbe4d5a249d87"
 
 [[projects]]
   name = "github.com/jtolds/gls"
@@ -20,8 +20,8 @@
     "internal/go-render/render",
     "internal/oglematchers"
   ]
-  revision = "0b37b35ec7434b77e77a4bb29b79677cced992ea"
-  version = "1.8.1"
+  revision = "7678a5452ebea5b7090a6b163f844c133f523da2"
+  version = "1.8.3"
 
 [[projects]]
   name = "github.com/smartystreets/goconvey"
