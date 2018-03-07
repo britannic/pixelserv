@@ -1,6 +1,5 @@
 *.bak
 *.crt
-*.deb
 *.DS_Store
 *.example
 *.iml
