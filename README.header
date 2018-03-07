@@ -42,8 +42,7 @@ either expressed or implied, of the FreeBSD Project.
 
 ## Features
 
-* Prevents HTTP 404 page not found messages if used in conjunction with dnsmasq IP redirects
-* Install [edgeos-dnsmasq-blacklist]( https://britannic.github.io/blacklist/)
+* Prevents HTTP 404 page not found messages if used in conjunction with dnsmasq IP redirects ([edgeos-dnsmasq-blacklist]( https://britannic.github.io/blacklist/) provides dnsmasq redirection and blacklisting functionality)
 
 ## Compatibility
 
