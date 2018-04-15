@@ -11,6 +11,7 @@
 
 # Executables
 	GSED=$(shell which gsed || which sed) -i.bak -e
+	PKG=edgeos-$(EXECUTABLE)-blacklist
 
 # Environment variables
 	COPYRIGHT=s/Copyright © 20../Copyright © $(shell date +"%Y")/g
@@ -141,3 +142,15 @@ push:
 	@echo Pushing release $(TAG) to master
 	git push --tags
 	git push
+
+.PHONY: repo
+repo:
+	@echo Pushing repository $(TAG) to aws
+	scp $(PKG)_$(VER)_*.deb aws:/tmp
+	./aws.sh $(AWS) $(PKG)_$(VER)_ $(TAG)
+
+.PHONY: upload
+upload: pkgs
+	scp $(PKG)_$(VER)_mips.deb dev1:/tmp
+	scp $(PKG)_$(VER)_mipsel.deb er-x:/tmp
+	scp $(PKG)_$(VER)_mips.deb ubnt:/tmp

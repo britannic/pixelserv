@@ -1,10 +1,24 @@
 # UBNT edgeos-pixelserv Transparent Pixel Server for IP Blackhole Redirects
 
-[![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/britannic/pixelserv/blob/master/LICENSE.txt) [![Alpha  Version](https://img.shields.io/badge/version-v0.06-green.svg)](https://github.com/britannic/pixelserv) [![GoDoc](https://godoc.org/github.com/britannic/pixelserv?status.svg)](https://godoc.org/github.com/britannic/pixelserv) [![Build Status](https://travis-ci.org/britannic/pixelserv.svg?branch=master)](https://travis-ci.org/britannic/pixelserv) [![Coverage Status](https://coveralls.io/repos/github/britannic/pixelserv/badge.svg?branch=master)](https://coveralls.io/github/britannic/pixelserv?branch=master) [![Go Report Card](https://goreportcard.com/badge/gojp/goreportcard)](https://goreportcard.com/report/github.com/britannic/pixelserv)
+[![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/britannic/pixelserv/blob/master/LICENSE.txt) [![Alpha Version](https://img.shields.io/badge/version-v0.06-green.svg)](https://github.com/britannic/pixelserv) [![GoDoc](https://godoc.org/github.com/britannic/pixelserv?status.svg)](https://godoc.org/github.com/britannic/pixelserv) [![Build Status](https://travis-ci.org/britannic/pixelserv.svg?branch=master)](https://travis-ci.org/britannic/pixelserv) [![Coverage Status](https://coveralls.io/repos/github/britannic/pixelserv/badge.svg?branch=master)](https://coveralls.io/github/britannic/pixelserv?branch=master) [![Go Report Card](https://goreportcard.com/badge/gojp/goreportcard)](https://goreportcard.com/report/github.com/britannic/pixelserv)
 
 [community.ubnt.com](https://community.ubnt.com/t5/EdgeMAX/Self-Installer-to-configure-Ad-Server-and-pixelserv-Blocking/td-p/1337892)
 
 NOTE: THIS IS NOT OFFICIAL UBIQUITI SOFTWARE AND THEREFORE NOT SUPPORTED OR ENDORSED BY Ubiquiti Networks®
+
+## Donations and Sponsorship
+
+* Show your thanks by donating to the project using [Square Cash](https://cash.me/ "Securely send and receive cash without fees using Square Cash")
+
+[![Donate](https://img.shields.io/badge/Donate-%245-orange.svg?style=plastic)](https://cash.me/$HelmRockSecurity/5 "Donate $5 using Square Cash (free money transfer)")
+[![Donate](https://img.shields.io/badge/Donate-%2410-red.svg?style=plastic)](https://cash.me/$HelmRockSecurity/10 "Donate $10 using Square Cash (free money transfer)")
+[![Donate](https://img.shields.io/badge/Donate-%2415-yellowg.svg?style=plastic)](https://cash.me/$HelmRockSecurity/15 "Donate $15 using Square Cash (free money transfer)")
+[![Donate](https://img.shields.io/badge/Donate-%2420-yellowgreen.svg?style=plastic)](https://cash.me/$HelmRockSecurity/20 "Donate $20 using Square Cash (free money transfer)")
+[![Donate](https://img.shields.io/badge/Donate-%2425-brightgreen.svg?style=plastic)](https://cash.me/$HelmRockSecurity/25 "Donate $25 using Square Cash (free money transfer)")
+[![Donate](https://img.shields.io/badge/Donate-%2450-ff69b4.svg?style=plastic)](https://cash.me/$HelmRockSecurity/50 "Donate $50 using Square Cash (free money transfer)")
+[![Donate](https://img.shields.io/badge/Donate-%24100-blue.svg?style=plastic)](https://cash.me/$HelmRockSecurity/100 "Donate $100 using Square Cash (free money transfer)")
+
+* We greatly appreciate any and all donations - Thank you!
 
 ## Copyright
 
@@ -46,7 +60,7 @@ either expressed or implied, of the FreeBSD Project.
 
 ## Compatibility
 
-* edgeos-pixelserv has been tested on the EdgeRouter ERLite-3, ERPoe-5, ER-X: EdgeOS versions v1.7.0-v1.1.10
+* edgeos-pixelserv has been tested on the EdgeRouter **ERLite-3**, **ERPoe-5**, **ER-X**: EdgeOS versions **v1.7.0-v1.1.10.1**
 * Note: the debian package will not successfully install on a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
 ## **Change Log**
