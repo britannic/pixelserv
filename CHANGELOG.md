@@ -2,6 +2,10 @@
 
 ## Releases
 
+### Patch v1.0.3 (Jun 4, 2018)
+
+* Documentation changes for EdgeOS v10.1.3
+
 ### Patch v1.0.2 (Mar 6, 2018)
 
 * Added logic to use pppoe parent link interface for pseudo-ethernet device
