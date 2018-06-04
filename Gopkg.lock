@@ -5,7 +5,7 @@
   branch = "master"
   name = "github.com/gopherjs/gopherjs"
   packages = ["js"]
-  revision = "df18d38287ab2ed3138d564e7c8cbe4d5a249d87"
+  revision = "8dffc02ea1cb8398bb73f30424697c60fcf8d4c5"
 
 [[projects]]
   name = "github.com/jtolds/gls"
