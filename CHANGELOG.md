@@ -2,9 +2,14 @@
 
 ## Releases
 
+### Patch v1.0.4 (Jun 4, 2018)
+
+* Changed detection logic for existing pseudo-ethernet interface from IP to actual device
+* Added debian package to online repository
+
 ### Patch v1.0.3 (Jun 4, 2018)
 
-* Documentation changes for EdgeOS v10.1.3
+* Documentation changes for EdgeOS v1.10.3
 
 ### Patch v1.0.2 (Mar 6, 2018)
 

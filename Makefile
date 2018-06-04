@@ -11,9 +11,10 @@
 
 # Executables
 	GSED=$(shell which gsed || which sed) -i.bak -e
-	PKG=edgeos-$(EXECUTABLE)-blacklist
+	PKG=edgeos-$(EXECUTABLE)
 
 # Environment variables
+	AWS=aws
 	COPYRIGHT=s/Copyright © 20../Copyright © $(shell date +"%Y")/g
 	COVERALLS_TOKEN=W6VHc8ZFpwbfTzT3xoluEWbKkrsKT1w25
 	DATE=$(shell date -u '+%Y-%m-%d_%I:%M:%S%p')
@@ -145,8 +146,8 @@ push:
 
 .PHONY: repo
 repo:
-	@echo Pushing repository $(TAG) to aws
-	scp $(PKG)_$(VER)_*.deb aws:/tmp
+	@echo Pushing repository $(TAG) to $(AWS)
+	scp $(PKG)_$(VER)_*.deb $(AWS):/tmp
 	./aws.sh $(AWS) $(PKG)_$(VER)_ $(TAG)
 
 .PHONY: upload

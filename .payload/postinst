@@ -113,21 +113,11 @@ add_pseudo() {
 		if echo ${wanif} | grep "pppoe"; then
 			wanif=$(run show configuration commands | awk '/^set interfaces ethernet.*pppoe.*$/ {print $4; exit;}')
 		fi
-
-		# echo_logger W "Unable to determine a parent interface for the pseudo-ethernet interface!"
-		# echo_logger I "In order to use pixelserv, a pseudo-ethernet interface is required, use these CLI commands:"
-		# echo -e "\tconfigure\n"
-		# echo -e "\tset service gui http-port 8180\n"
-		# echo -e "\tset interfaces pseudo-ethernet peth0 address 192.168.168.1/24\n"
-		# echo -e "\tset interfaces pseudo-ethernet peth0 description \"Pixel Server\"\n"
-		# echo -e "\tset interfaces pseudo-ethernet peth0 link <WAN Interface>\n"
-		# echo_logger I "Note: you can add any valid peth[x] interface. However, if you change the IP address, you must edit /etc/init.d/pixelserv"
-		# exit 0
 	fi
 
-	ping -c1 -t1 192.168.168.1 &>/dev/null
+	/opt/vyatta/share/enumeration/existing-interfaces | grep peth0 &>/dev/null
 	if [[ ${?} == 0 ]]; then
-		echo_logger W "192.168.168.1 is already configured, you will need to set up a pseudo-ethernet interface with different IP address"
+		echo_logger W "peth0 is already configured, you will need to set up a pseudo-ethernet interface with a different IP address"
 		echo_logger I "In order to use pixelserv, a pseudo-ethernet interface is required, use these CLI commands:"
 		echo -e "\tconfigure\n"
 		echo -e "\tset service gui http-port 8180\n"

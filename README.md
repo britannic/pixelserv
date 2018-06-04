@@ -82,18 +82,48 @@ either expressed or implied, of the FreeBSD Project.
 * edgeos-pixelserv installs itself as a service into /etc/init.d/pixelserv
 * The installation will modify the router's configuration settings to move "service gui http-port 80" to "service gui http-port 8180" to prevent conflict with pixelserv on port 80
 
+* [Using apt-get](#apt-get-installation---erlite-3--erpoe-5--er-x--er-x-sfp--unifi-gateway-3) - works for all routers
+* [Using dpkg](#dpkg-installation---best-for-disk-space-constrained-routers) - best for disk space constrained routers
+
+### apt-get Installation - ERLite-3, ERPoe-5, ER-X, ER-X-SFP & UniFi-Gateway-3
+
+* Add the blacklist debian package repository using the router's CLI shell
+
+```bash
+configure
+set system package repository blacklist components main
+set system package repository blacklist description 'Britannic blacklist debian wheezy repository'
+set system package repository blacklist distribution wheezy
+set system package repository blacklist url 'https://raw.githubusercontent.com/britannic/debian-repo/master/blacklist/'
+commit;save;exit
+```
+
+* Add the GPG signing key
+
+```bash
+sudo curl -L https://raw.githubusercontent.com/britannic/debian-repo/master/blacklist/public.key | sudo apt-key add -
+```
+
+* Update the system repositorities and install edgeos-pixelserv
+
+```bash
+sudo apt-get update && sudo apt-get install edgeos-pixelserv
+```
+
+### dpkg installation - Best for disk space constrained routers
+
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.3_mips.deb
-sudo dpkg -i edgeos-pixelserv_1.0.3_mips.deb
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.4_mips.deb
+sudo dpkg -i edgeos-pixelserv_1.0.4_mips.deb
 ```
 
 ### EdgeRouter ER-X & ER-X-SFP
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.3_mipsel.deb
-sudo dpkg -i edgeos-pixelserv_1.0.3_mipsel.deb
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.4_mipsel.deb
+sudo dpkg -i edgeos-pixelserv_1.0.4_mipsel.deb
 ```
 
 ## Removal
