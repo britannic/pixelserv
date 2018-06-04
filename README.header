@@ -82,7 +82,7 @@ either expressed or implied, of the FreeBSD Project.
 * edgeos-pixelserv installs itself as a service into /etc/init.d/pixelserv
 * The installation will modify the router's configuration settings to move "service gui http-port 80" to "service gui http-port 8180" to prevent conflict with pixelserv on port 80
 
-* [Using apt-get](#apt-get-installation---erlite-3-erpoe-5-er-x-er-x-sfp) - works for all routers
+* [Using apt-get](https://github.com/britannic/pixelserv#apt-get-installation---erlite-3-erpoe-5-er-x--er-x-sfp) - works for all routers
 * [Using dpkg](#dpkg-installation---best-for-disk-space-constrained-routers) - best for disk space constrained routers
 
 ### apt-get Installation - ERLite-3, ERPoe-5, ER-X & ER-X-SFP
