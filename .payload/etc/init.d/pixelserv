@@ -27,7 +27,9 @@ OPTS="-ip=${HOST} -port=${PORT}"
 
 [[ -x ${DAEMON} ]] || exit 0
 
+# Include functions 
 set -e
+. /lib/lsb/init-functions
 
 PIDFILE=/var/run/${NAME}.pid
 
