@@ -147,10 +147,10 @@ fix_cfg_grp() {
 setup_init() {
 	try chmod 0755 /etc/init.d/pixelserv
 	try update-rc.d pixelserv defaults
-	[ -x $(which systemctl) ] && try systemctl daemon-reload
 }
 
 start_pix() {
+	[ -x $(which systemctl) ] && try systemctl daemon-reload
 	/etc/init.d/pixelserv start
 }
 
