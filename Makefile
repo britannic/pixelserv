@@ -47,7 +47,8 @@ build: clean amd64 mips copyright docs readme
 
 .PHONY: cdeps 
 cdeps: 
-	dep status -dot | dot -T png | open -f -a /Applications/Preview.app
+	# dep status -dot | dot -T png | open -f -a /Applications/Preview.app
+	go mod tidy
 
 .PHONY: clean
 clean:
@@ -74,7 +75,8 @@ dep-stat:
 
 .PHONY: deps
 deps: 
-	dep ensure -update
+	# dep ensure -update
+	go mod tidy
 
 .PHONY: docs
 docs: version readme 

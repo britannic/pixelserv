@@ -70,7 +70,7 @@ either expressed or implied, of the FreeBSD Project.
 
 ## Compatibility
 
-* edgeos-pixelserv has been tested on the EdgeRouter **ERLite-3**, **ERPoe-5**, **ER-X**: EdgeOS versions **v1.7.0-v2.0.0**
+* edgeos-pixelserv has been tested on the EdgeRouter **ERLite-3**, **ERPoe-5**, **ER-X**: EdgeOS versions **v1.7.0-v1.1.10.3**
 * Note: the debian package will not successfully install on a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
 ## **Change Log**
@@ -115,15 +115,15 @@ sudo apt-get update && sudo apt-get install edgeos-pixelserv
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.4_mips.deb
-sudo dpkg -i edgeos-pixelserv_1.0.4_mips.deb
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.5_mips.deb
+sudo dpkg -i edgeos-pixelserv_1.0.5_mips.deb
 ```
 
 ### EdgeRouter ER-X & ER-X-SFP
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.4_mipsel.deb
-sudo dpkg -i edgeos-pixelserv_1.0.4_mipsel.deb
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.5_mipsel.deb
+sudo dpkg -i edgeos-pixelserv_1.0.5_mipsel.deb
 ```
 
 ## Removal
