@@ -2,6 +2,10 @@
 
 ## Releases
 
+### Patch v1.0.5 (Jan 14, 2019)
+
+* Patched to support EdgeOS 2.0.0
+
 ### Patch v1.0.4 (Jun 4, 2018)
 
 * Changed detection logic for existing pseudo-ethernet interface from IP to actual device

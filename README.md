@@ -32,7 +32,7 @@ We greatly appreciate any and all donations - Thank you! Funds go to maintaining
 
 ## Copyright
 
-* Copyright © [2018 Helm Rock Consulting](https://www.helmrock.com/ "Visit Helm Rock Consulting at https://www.helmrock.com/")
+* Copyright © [2019 Helm Rock Consulting](https://www.helmrock.com/ "Visit Helm Rock Consulting at https://www.helmrock.com/")
 
 ## Overview
 
@@ -70,7 +70,7 @@ either expressed or implied, of the FreeBSD Project.
 
 ## Compatibility
 
-* edgeos-pixelserv has been tested on the EdgeRouter **ERLite-3**, **ERPoe-5**, **ER-X**: EdgeOS versions **v1.7.0-v1.1.10.3**
+* edgeos-pixelserv has been tested on the EdgeRouter **ERLite-3**, **ERPoe-5**, **ER-X**: EdgeOS versions **v1.7.0-v2.0.0**
 * Note: the debian package will not successfully install on a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
 ## **Change Log**

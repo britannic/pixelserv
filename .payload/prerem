@@ -125,6 +125,7 @@ fix_cfg_grp() {
 remove_init(){
 	/etc/init.d/pixelserv stop
 	try update-rc.d -f pixelserv remove
+	[ -x $(which systemctl) ] && try systemctl daemon-reload
 }
 
 remv_pseudo
