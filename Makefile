@@ -53,7 +53,7 @@ cdeps:
 .PHONY: clean
 clean:
 	$(GOCLEAN)
-	find . -name "$(EXECUTABLE).*" -type f \
+	find . -name "$(EXECUTABLE).{mips,mipsel}" -type f \
 	-o -name debug -type f \
 	-o -name "*.deb" -type f \
 	-o -name debug.test -type f \
