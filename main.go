@@ -113,7 +113,11 @@ func loadPix(w http.ResponseWriter, _ *http.Request) {
 	w.Header().Set("Content-Type", http.DetectContentType(pix))
 	w.Header().Set("Content-Length", fmt.Sprint(len(pix)))
 	w.Header().Set("Accept-Ranges", "bytes")
-	w.Write(pix)
+	i, err := w.Write(pix)
+	if err != nil {
+		log.Printf("Write integer: %d", i)
+		logFatalln(err.Error())
+	}
 }
 
 func main() {
