@@ -1,0 +1,21 @@
+[Unit]
+Description=pixelserv Web Server for serving 1x1 pixels for ad blocking
+StartLimitBurst=5
+StartLimitIntervalSec=0
+
+[Service]
+ExecStart=/config/scripts/pixelserv -ip=192.168.168.1 -port=80
+KillMode=process
+KillSignal=SIGTERM
+LimitNOFILE=5555
+Restart=always
+Restart=on-failure
+RestartSec=2
+TimeoubvxartSec=0
+Type=simple
+User=root
+WorkingDirectory=/config/scripts/
+ 
+[Install]
+Alias=pixelserv.service
+WantedBy=multi-user.target
