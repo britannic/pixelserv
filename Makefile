@@ -147,7 +147,7 @@ push:
 	git push
 
 .PHONY: repo
-repo:
+repo: pkgs
 	@echo Pushing repository $(TAG) to $(AWS)
 	scp $(PKG)_$(VER)_*.deb $(AWS):/tmp
 	./aws.sh $(AWS) $(PKG)_$(VER)_ $(TAG)

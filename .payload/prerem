@@ -132,7 +132,6 @@ remove_init(){
 	else
 		[ -f /etc/init.d/pixelserv.sysv ] && /etc/init.d/pixelserv.sysv stop
 		[ -f /etc/init.d/pixelserv.sysv ] && try update-rc.d -f pixelserv.sysv remove
-		[ -f /etc/init.d/pixelserv.sysv ] && try rm /etc/init.d/pixelserv.sysv
 	fi
 }
 
