@@ -33,7 +33,6 @@
 *.tgz
 *.VC.db
 *.xml
-blacklist.*
 vendor/
 
 .payload/config/scripts/pixelserv
