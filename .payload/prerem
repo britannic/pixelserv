@@ -107,11 +107,14 @@ try() {
 	fi
 }
 
-remv_pseudo() {
-	wanif=$(ip route get 8.8.8.8 | awk -F"dev " 'NR==1 {split($2,a," ");print a[1]}')
+remv_pseudo() {	
+	# wanif=$(ip route get 8.8.8.8 | awk -F"dev " 'NR==1 {split($2,a," ");print a[1]}')
+	/opt/vyatta/share/enumeration/existing-interfaces | grep peth0 &>/dev/null && peth=1
 	try begin
 	try set service gui http-port 80
-	try delete interfaces pseudo-ethernet peth0
+	if [[ ${peth} == 1 ]]; then
+		try delete interfaces pseudo-ethernet peth0
+	fi
 	try commit
 	try save
 	try end
@@ -123,10 +126,13 @@ fix_cfg_grp() {
 }
 
 remove_init(){
-	[ -f /etc/init.d/pixelserv ] && /etc/init.d/pixelserv stop
-	try update-rc.d -f pixelserv remove
-	if [ -d /lib/systemd/system ]; then 
-		systemctl disable pixelserv
+	if [ -x $(which systemctl) ]; then 
+		[ -f /etc/systemd/system/pixelserv.service ] && systemctl disable pixelserv
+		[ -f /etc/systemd/system/pixelserv.service ] && systemctl daemon-reload
+		[ -f /var/lib/systemd/system/pixelserv.service ] && rm /var/lib/systemd/system/pixelserv.service
+	else
+		[ -f /etc/init.d/pixelserv ] && /etc/init.d/pixelserv stop
+		try update-rc.d -f pixelserv remove
 		rm /etc/init.d/pixelserv
 	fi
 }
