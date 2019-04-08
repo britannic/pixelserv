@@ -157,8 +157,14 @@ Usage: pixelserv [options]
         Show version
 ```
 
-* pixelserv service
+* pixelserv.sysv service (EdgeOS < v1.10.x)
 
 ```bash
 service pixelserv {start|stop|status|restart|force-reload|reload}
+```
+
+* pixelserv service (EdgeOS > v2.0.1)
+
+```bash
+systemctl start pixelserv
 ```
