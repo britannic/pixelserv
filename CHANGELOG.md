@@ -4,7 +4,7 @@
 
 ### Patch v1.0.7 (Apr 7, 2019)
 
-* Patched to support EdgeOS 2.0.1
+* Updated to support EdgeOS 2.0.1
 
 ### Patch v1.0.4 (Jun 4, 2018)
 
