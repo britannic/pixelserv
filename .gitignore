@@ -1,17 +1,40 @@
-*.bak
-*.crt
-*.DS_Store
-*.example
-*.iml
-*.key
+# Ignore all
+*
+
+# Add back files with extensions and directories
+!*.*
+!*/
+!Makefile
+!.travis.yml
+!testcoverage
+!VERSION
+!license
+
+# Ignore
+.coveralls.yml
+.DS_Store
+.git.bfg-report/
+.idea/
+.payload/config/scripts/update-dnsmasq
+.vscode/
 *.amd64
+*.bak
+*.bkp
+*.cover
+*.debug
+*.file
+*.html
+*.lock
+*.log
 *.mips
 *.mipsel
-*.swp
+*.out
+*.test
 *.tgz
+*.VC.db
 *.xml
-browse.VC.db
-debug.test
+blacklist.*
+vendor/
 
 .payload/config/scripts/pixelserv
 

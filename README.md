@@ -70,7 +70,7 @@ either expressed or implied, of the FreeBSD Project.
 
 ## Compatibility
 
-* edgeos-pixelserv has been tested on the EdgeRouter **ERLite-3**, **ERPoe-5**, **ER-X**: EdgeOS versions **v1.7.0-v1.1.10.3**
+* edgeos-pixelserv has been tested on the EdgeRouter **ERLite-3**, **ERPoe-5**, **ER-X**: EdgeOS versions **v1.7.0-v2.0.1**
 * Note: the debian package will not successfully install on a UniFi Gateway, since there is also a default HTTP port 80 listener configured all interfaces
 
 ## **Change Log**
@@ -157,10 +157,16 @@ Usage: pixelserv [options]
         Show version
 ```
 
-* pixelserv service
+* pixelserv.sysv service (EdgeOS < v1.10.x)
 
 ```bash
 service pixelserv {start|stop|status|restart|force-reload|reload}
+```
+
+* pixelserv service (EdgeOS > v2.0.1)
+
+```bash
+systemctl start pixelserv
 ```
 
 > pixelserv
