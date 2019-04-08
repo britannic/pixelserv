@@ -127,13 +127,13 @@ fix_cfg_grp() {
 
 remove_init(){
 	if [ -x $(which systemctl) ]; then 
-		[ -f /etc/systemd/system/pixelserv.service ] && systemctl disable pixelserv
-		[ -f /etc/systemd/system/pixelserv.service ] && systemctl daemon-reload
-		[ -f /var/lib/systemd/system/pixelserv.service ] && rm /var/lib/systemd/system/pixelserv.service
+		[ -f /etc/systemd/system/pixelserv.service ] && try systemctl disable pixelserv
+		[ -f /etc/systemd/system/pixelserv.service ] && try systemctl daemon-reload
+		# [ -f /var/lib/systemd/system/pixelserv.service ] && rm /var/lib/systemd/system/pixelserv.service
 	else
-		[ -f /etc/init.d/pixelserv ] && /etc/init.d/pixelserv stop
-		try update-rc.d -f pixelserv remove
-		rm /etc/init.d/pixelserv
+		[ -f /etc/init.d/pixelserv.sysv ] && /etc/init.d/pixelserv stop
+		try update-rc.d -f pixelserv.sysv remove
+		try rm /etc/init.d/pixelserv.sysv
 	fi
 }
 
