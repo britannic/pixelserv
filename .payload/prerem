@@ -129,7 +129,6 @@ remove_init(){
 	if [ -f /bin/systemctl ]; then 
 		[ -f /etc/systemd/system/pixelserv.service ] && try systemctl disable pixelserv
 		[ -f /etc/systemd/system/pixelserv.service ] && try systemctl daemon-reload
-		# [ -f /var/lib/systemd/system/pixelserv.service ] && rm /var/lib/systemd/system/pixelserv.service
 	else
 		[ -f /etc/init.d/pixelserv.sysv ] && /etc/init.d/pixelserv stop
 		try update-rc.d -f pixelserv.sysv remove

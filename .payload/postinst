@@ -145,8 +145,7 @@ fix_cfg_grp() {
 }
 
 setup_init() {
-	if [ -d /lib/systemd/system ]; then 
-		# mv /etc/init.d/pixelserv /lib/systemd/system
+	if [ -f /bin/systemctl ]; then 
 		try systemctl daemon-reload
 	else
 		try chmod 0755 /etc/init.d/pixelserv.sysv
@@ -156,7 +155,7 @@ setup_init() {
 }
 
 start_pix() {	
-	if [ -x $(which systemctl) ]; then
+	if [ -f /bin/systemctl ]; then
 		try systemctl start pixelserv
 	else
 		try service start pixelserv.sysv
