@@ -2,6 +2,15 @@
 
 ## Releases
 
+### Release v1.0.8 (Apr 19, 2019)
+
+* Moved /etc/systemd/system/pixelserv.service to /lib/systemd/system/pixelserv.service
+* Fix auto start of pixelserv following reboot by updating post install script with:
+
+```bash
+    systemctl enable pixelserv
+```
+
 ### Release v1.0.7 (Apr 7, 2019)
 
 * Updated to support EdgeOS 2.0.1

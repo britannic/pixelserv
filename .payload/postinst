@@ -125,7 +125,7 @@ add_pseudo() {
 		echo -e "\tset interfaces pseudo-ethernet peth0 description \"Pixel Server\"\n"
 		echo -e "\tset interfaces pseudo-ethernet peth0 link <WAN Interface>\n"
 		if [ -f /bin/systemctl ]; then
-			echo_logger I "Note: you can add any valid peth[x] interface. However, you must edit /etc/systemd/system/pixelserv.service and change the IP address for the listener"
+			echo_logger I "Note: you can add any valid peth[x] interface. However, you must edit /lib/systemd/system/pixelserv.service and change the IP address for the listener"
 		else
 			echo_logger I "Note: you can add any valid peth[x] interface. However, you must edit /etc/init.d/pixelserv and change the IP address for the listener"
 		fi
@@ -147,7 +147,8 @@ fix_cfg_grp() {
 }
 
 setup_init() {
-	if [ -f /bin/systemctl ]; then 
+	if [ -f /bin/systemctl ]; then
+		try systemctl enable pixelserv 
 		try systemctl daemon-reload
 	else
 		try chmod 0755 /etc/init.d/pixelserv.sysv
@@ -166,8 +167,8 @@ start_pix() {
 
 case ${1} in
     configure)
-		add_pseudo
-		fix_cfg_grp
-		setup_init
-		start_pix
+			add_pseudo
+			fix_cfg_grp
+			setup_init
+			start_pix
 esac

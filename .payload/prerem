@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# set -x
+
 export DEBIAN_FRONTEND=noninteractive
 
 # Set up the Vyatta environment
@@ -125,13 +127,14 @@ fix_cfg_grp() {
 	try chgrp -R vyattacfg /opt/vyatta/config/active
 }
 
-remove_init(){
-	if [ -f /bin/systemctl ]; then 
-		[ -f /etc/systemd/system/pixelserv.service ] && try systemctl disable pixelserv
-		[ -f /etc/systemd/system/pixelserv.service ] && try systemctl daemon-reload
+remove_init() {
+	if [[ -f /bin/systemctl ]]; then
+		[[ -f /etc/systemd/system/pixelserv.service ]] && try systemctl stop pixelserv 
+		[[ -f /etc/systemd/system/pixelserv.service ]] && try systemctl disable pixelserv
+		[[ -f /lib/systemd/system/pixelserv.service ]] && try systemctl daemon-reload
 	else
-		[ -f /etc/init.d/pixelserv.sysv ] && /etc/init.d/pixelserv.sysv stop
-		[ -f /etc/init.d/pixelserv.sysv ] && try update-rc.d -f pixelserv.sysv remove
+		[[ -f /etc/init.d/pixelserv.sysv ]] && try /etc/init.d/pixelserv.sysv stop
+		[[ -f /etc/init.d/pixelserv.sysv ]] && try update-rc.d -f pixelserv.sysv remove
 	fi
 }
 

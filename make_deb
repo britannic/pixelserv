@@ -23,6 +23,7 @@ pwd=$(pwd)
 sdir="${pwd}/.payload"
 src1='etc/'
 src2='config/'
+src3='lib/'
 scripts="${sdir}/${src2}/scripts"
 url='https://github.com/britannic/${exe}'
 vend='Helm Rock Consulting'
@@ -72,7 +73,7 @@ make_debian() {
 		-v "${ver}" \
 		-x "${exc1}" \
 		-x "${exc2}" \
-		-s dir "${src1}" "${src2}"
+		-s dir "${src1}" "${src2}" "${src3}"
 }
 
 compress_deb(){

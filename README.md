@@ -115,15 +115,15 @@ sudo apt-get update && sudo apt-get install edgeos-pixelserv
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.7_mips.deb
-sudo dpkg -i edgeos-pixelserv_1.0.7_mips.deb
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.8_mips.deb
+sudo dpkg -i edgeos-pixelserv_1.0.8_mips.deb
 ```
 
 ### EdgeRouter ER-X & ER-X-SFP
 
 ```bash
-curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.7_mipsel.deb
-sudo dpkg -i edgeos-pixelserv_1.0.7_mipsel.deb
+curl -L -O  https://raw.githubusercontent.com/britannic/pixelserv/master/edgeos-pixelserv_1.0.8_mipsel.deb
+sudo dpkg -i edgeos-pixelserv_1.0.8_mipsel.deb
 ```
 
 ## Removal
