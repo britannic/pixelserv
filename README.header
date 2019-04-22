@@ -85,7 +85,7 @@ either expressed or implied, of the FreeBSD Project.
 * [Using apt-get](https://github.com/britannic/pixelserv#apt-get-installation---erlite-3-erpoe-5-er-x--er-x-sfp) - works for all routers
 * [Using dpkg](#dpkg-installation---best-for-disk-space-constrained-routers) - best for disk space constrained routers
 
-### apt-get Installation - ERLite-3, ERPoe-5, ER-X & ER-X-SFP
+## apt-get Installation - ERLite-3, ERPoe-5, ER-X & ER-X-SFP
 
 * Add the blacklist debian package repository using the router's CLI shell
 
@@ -110,7 +110,7 @@ sudo curl -L https://raw.githubusercontent.com/britannic/debian-repo/master/blac
 sudo apt-get update && sudo apt-get install edgeos-pixelserv
 ```
 
-### dpkg installation - Best for disk space constrained routers
+## dpkg installation - Best for disk space constrained routers
 
 ### EdgeRouter ERLite-3, ERPoe-5 and similar MIPS based Edgerouters
 
