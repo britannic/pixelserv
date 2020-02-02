@@ -32,7 +32,7 @@ We greatly appreciate any and all donations - Thank you! Funds go to maintaining
 
 ## Copyright
 
-* Copyright Â© [2019 Helm Rock Consulting](https://www.helmrock.com/ "Visit Helm Rock Consulting at https://www.helmrock.com/")
+* Copyright © [2020 Helm Rock Consulting](https://www.helmrock.com/ "Visit Helm Rock Consulting at https://www.helmrock.com/")
 
 ## Overview
 
