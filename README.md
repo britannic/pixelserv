@@ -167,5 +167,4 @@ service pixelserv {start|stop|status|restart|force-reload|reload}
 
 ```bash
 systemctl start pixelserv
-```# pixelserv
---
+```
