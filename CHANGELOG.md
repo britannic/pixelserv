@@ -2,6 +2,11 @@
 
 ## Releases
 
+### Documentation update (Feb 2, 2020)
+
+* Blacklist repository has been updated
+* Requires apt sources update on OS
+
 ### Release v1.0.8 (Apr 19, 2019)
 
 * Moved /etc/systemd/system/pixelserv.service to /lib/systemd/system/pixelserv.service
