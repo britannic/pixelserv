@@ -118,7 +118,7 @@ pkg-mipsel: clean deps mipsle coverage copyright docs readme
 .PHONY: readme 
 readme: version
 	cat README.header > README.md 
-	godoc2md github.com/britannic/$(EXECUTABLE) >> README.md
+	godocdown github.com/britannic/$(EXECUTABLE) >> README.md
 
 .PHONY: tags
 tags:

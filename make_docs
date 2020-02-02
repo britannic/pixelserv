@@ -4,5 +4,5 @@ main='github.com/britannic/${1}'
 pkgs='main'
 
 for pkg in ${pkgs}; do
-  godoc2md ${main}/${pkg} >${GOPATH}/src/${main}/${pkg}/README.md
+  godocdown ${main}/${pkg} >${GOPATH}/src/${main}/${pkg}/README.md
 done
