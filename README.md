@@ -94,7 +94,7 @@ configure
 set system package repository blacklist components main
 set system package repository blacklist description 'Britannic blacklist debian stretch repository'
 set system package repository blacklist distribution stretch
-set system package repository blacklist url 'https://raw.githubusercontent.com/britannic/debian-repo/master/blacklist/'
+set system package repository blacklist url 'https://raw.githubusercontent.com/britannic/debian-repo/master/blacklist/public/'
 commit;save;exit
 ```
 
@@ -167,4 +167,5 @@ service pixelserv {start|stop|status|restart|force-reload|reload}
 
 ```bash
 systemctl start pixelserv
-```
+```# pixelserv
+--

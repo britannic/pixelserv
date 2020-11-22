@@ -2,6 +2,11 @@
 
 ## Releases
 
+### Documentation update (November 23, 2020)
+
+* Blacklist repository has been updated
+* Requires apt sources update on OS
+
 ### Documentation update (Feb 2, 2020)
 
 * Blacklist repository has been updated
