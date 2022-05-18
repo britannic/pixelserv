@@ -4,7 +4,7 @@
 
 [community.ubnt.com](https://community.ubnt.com/t5/EdgeMAX/Self-Installer-to-configure-Ad-Server-and-pixelserv-Blocking/td-p/1337892)
 
-NOTE: THIS IS NOT OFFICIAL UBIQUITI SOFTWARE AND THEREFORE NOT SUPPORTED OR ENDORSED BY Ubiquiti Networks®
+NOTE: THIS IS NOT OFFICIAL UBIQUITI SOFTWARE AND THEREFORE NOT SUPPORTED OR ENDORSED BY Ubiquiti NetworksÂ®
 
 ## Donations and Sponsorship
 
@@ -28,7 +28,7 @@ We greatly appreciate any and all donations - Thank you! Funds go to maintaining
 
 ## Copyright
 
-* Copyright � [2020 Helm Rock Consulting](https://www.helmrock.com/ "Visit Helm Rock Consulting at https://www.helmrock.com/")
+* Copyright © [2022 Helm Rock Consulting](https://www.helmrock.com/ "Visit Helm Rock Consulting at https://www.helmrock.com/")
 
 ## Overview
 
