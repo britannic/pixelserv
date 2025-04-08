@@ -1,11 +1,11 @@
-module github.com/britannic/pixelserv
+module britannic/pixelserv
+
+go 1.24.0
+
+require github.com/smartystreets/goconvey v1.8.1
 
 require (
-	github.com/gopherjs/gopherjs v0.0.0-20180227192048-df18d38287ab // indirect
+	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
-	github.com/smartystreets/assertions v0.0.0-20180301161246-7678a5452ebe // indirect
-	github.com/smartystreets/goconvey v0.0.0-20170602164621-9e8dc3f972df
-	github.com/smartystreets/gunit v0.0.0-20180314194857-6f0d6275bdcd // indirect
+	github.com/smarty/assertions v1.15.0 // indirect
 )
-
-go 1.13
